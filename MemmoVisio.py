@@ -1,4 +1,5 @@
-import streamlit as st
+import streamlit as 
+import pyvista as pv
 import pandas as pd
 import numpy as np
 import snowflake.connector
@@ -854,3 +855,4 @@ if selected == "Contact Us":
 # Footer
 
 st.markdown("<footer style='text-align: center; padding: 20px; background-color:Black; color: white;'>© 2025 MammoInsight. All rights reserved.</footer>", unsafe_allow_html=True)       
+
