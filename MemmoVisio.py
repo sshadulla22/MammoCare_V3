@@ -1,4 +1,4 @@
-import streamlit as 
+import streamlit as st
 import pyvista as pv
 import pandas as pd
 import numpy as np
@@ -855,4 +855,5 @@ if selected == "Contact Us":
 # Footer
 
 st.markdown("<footer style='text-align: center; padding: 20px; background-color:Black; color: white;'>© 2025 MammoInsight. All rights reserved.</footer>", unsafe_allow_html=True)       
+
 
