@@ -12,3 +12,5 @@ matplotlib
 scikit-image
 plotly
 pyvista
+vedo
+vtk
