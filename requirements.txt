@@ -11,4 +11,4 @@ requests
 matplotlib
 scikit-image
 plotly
-vedo
+pyvista
