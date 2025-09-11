@@ -1,11 +1,11 @@
 import streamlit as st
-import pyvista as pv
 import pandas as pd
 import numpy as np
 import snowflake.connector
 import streamlit_option_menu
 from streamlit_option_menu import option_menu
 import os
+from turtle import pd
 import cv2
 from PIL import Image
 import pydicom  # Import pydicom for DICOM file support
@@ -39,7 +39,7 @@ headers = {
 }
 
 # Set page configuration
-st.set_page_config(page_title="MammoInsight", page_icon="🩺", layout="wide")
+st.set_page_config(page_title="MammoCare", page_icon="🩺", layout="wide")
 
 #Load CSV DATA----Shadulla Shaikh Date of Update 02-11-2024 Time: 18:40
 @st.cache_data
@@ -165,7 +165,7 @@ st.markdown(
     <header class="stAppHeader">
         <div class="stAppToolbar">
             <div>
-                <h1 style="margin: 0; font-size: 20px; color: white;">MammoInsight</h1>
+                <h1 style="margin: 0; font-size: 20px; color: white;">MammoCare</h1>
             </div>
         <!-- <div>
     <a href="https://your-link-here.com" target="_blank" class="custom-header-button">Contact Us</a>
@@ -462,23 +462,23 @@ if selected == "Home":
     </style>
 
     <div class="About-box" id="About-box">
-        <h1>About MammoInsight</h1>
+        <h1>About MammoCare</h1>
         <p>
-             MammoInsight is an advanced mammogram image processing platform tailored to revolutionize breast cancer detection by eliminating artifacts and enhancing image clarity. Early detection of breast cancer can significantly improve survival rates, but dense breast tissue and artifacts such as the pectoral muscle often obscure mammogram readings.
-             MammoInsight employs both manual and automated pectoral muscle removal techniques, including depth-first search algorithms and advanced image processing methods, to produce artifact-free, high-quality images. This clarity enables radiologists to detect abnormalities, tumors, or dense regions with unparalleled accuracy.
-             Additionally, MammoInsight introduces interactive 3D visualizations, allowing healthcare professionals to explore breast tissue layer by layer for a more detailed analysis. By addressing challenges such as dense tissue masking, MammoInsight provides radiologists with a cutting-edge tool for enhancing diagnostic precision and improving breast health management.
-             By combining innovative technologies and a user-friendly interface, MammoInsight transforms mammogram analysis, empowering healthcare professionals to deliver faster, more accurate diagnoses and ensuring better outcomes for patients worldwide.
+             MammoCare is an advanced mammogram image processing platform tailored to revolutionize breast cancer detection by eliminating artifacts and enhancing image clarity. Early detection of breast cancer can significantly improve survival rates, but dense breast tissue and artifacts such as the pectoral muscle often obscure mammogram readings.
+             MammoCare employs both manual and automated pectoral muscle removal techniques, including depth-first search algorithms and advanced image processing methods, to produce artifact-free, high-quality images. This clarity enables radiologists to detect abnormalities, tumors, or dense regions with unparalleled accuracy.
+             Additionally, MammoCare introduces interactive 3D visualizations, allowing healthcare professionals to explore breast tissue layer by layer for a more detailed analysis. By addressing challenges such as dense tissue masking, MammoCare provides radiologists with a cutting-edge tool for enhancing diagnostic precision and improving breast health management.
+             By combining innovative technologies and a user-friendly interface, MammoCare transforms mammogram analysis, empowering healthcare professionals to deliver faster, more accurate diagnoses and ensuring better outcomes for patients worldwide.
         </p>
     </div>
 """, unsafe_allow_html=True)
 
     # Features section
     st.markdown("<div class='About-box' id='About-box'><h1>Key Features</h1></div>", unsafe_allow_html=True)
-    st.markdown("<div class='feature-box'><h3 class='feature-box'>Advanced Image Clarity Optimization</h3><p>MammoInsight employs advanced image processing techniques to enhance the clarity and quality of mammogram images, eliminating artifacts and improving tissue visualization. This high-level optimization ensures more accurate breast tissue assessment, which is crucial for effective early detection of abnormalities and tumors.</p></div>", unsafe_allow_html=True)
-    st.markdown("<div class='feature-box'><h3 class='feature-box'>Dual Approach to Pectoral Muscle Removal</h3><p>MammoInsight utilizes both manual and automated techniques to remove the pectoral muscle from mammogram images. Manual techniques allow radiologists to define and adjust the removal based on their preferences. The Auto Pectoral Muscle Removal method employs depth-first search algorithms and advanced image processing to efficiently segment and remove the pectoral muscle, improving image clarity and accuracy for diagnosis.</p></div>", unsafe_allow_html=True)
-    st.markdown("<div class='feature-box'><h3 class='feature-box'>Dense Region Identification</h3><p>MammoInsight specializes in identifying dense regions within mammogram images, which can often obscure abnormalities. By highlighting these dense regions, MammoInsight allows healthcare professionals to effectively detect potential risks, ensuring timely intervention and better breast health management.</p></div>", unsafe_allow_html=True)
-    st.markdown("<div class='feature-box'><h3 class='feature-box'>Interactive 3D Visualization</h3><p>With MammoInsight’s interactive 3D visualizations, healthcare professionals can explore breast tissue layer by layer, enhancing the ability to analyze the images in greater detail. This tool provides a comprehensive understanding of the breast tissue structure, making it easier to detect abnormalities and improve diagnostic accuracy.</p></div>", unsafe_allow_html=True)
-    st.markdown("<div class='feature-box'><h3 class='feature-box'>AI-Powered Diagnostic Assistance</h3><p>Integrated with aiXplain, MammoInsight incorporates AI-driven diagnostic assistance, offering healthcare professionals valuable insights and recommendations based on sophisticated algorithms. This feature supports clinicians by providing more accurate analysis and helping them make informed decisions about patient care, leading to better outcomes.</p></div>", unsafe_allow_html=True)
+    st.markdown("<div class='feature-box'><h3 class='feature-box'>Advanced Image Clarity Optimization</h3><p>MammoCare employs advanced image processing techniques to enhance the clarity and quality of mammogram images, eliminating artifacts and improving tissue visualization. This high-level optimization ensures more accurate breast tissue assessment, which is crucial for effective early detection of abnormalities and tumors.</p></div>", unsafe_allow_html=True)
+    st.markdown("<div class='feature-box'><h3 class='feature-box'>Dual Approach to Pectoral Muscle Removal</h3><p>MammoCare utilizes both manual and automated techniques to remove the pectoral muscle from mammogram images. Manual techniques allow radiologists to define and adjust the removal based on their preferences. The Auto Pectoral Muscle Removal method employs depth-first search algorithms and advanced image processing to efficiently segment and remove the pectoral muscle, improving image clarity and accuracy for diagnosis.</p></div>", unsafe_allow_html=True)
+    st.markdown("<div class='feature-box'><h3 class='feature-box'>Dense Region Identification</h3><p>MammoCare specializes in identifying dense regions within mammogram images, which can often obscure abnormalities. By highlighting these dense regions, MammoCare allows healthcare professionals to effectively detect potential risks, ensuring timely intervention and better breast health management.</p></div>", unsafe_allow_html=True)
+    st.markdown("<div class='feature-box'><h3 class='feature-box'>Interactive 3D Visualization</h3><p>With MammoCare’s interactive 3D visualizations, healthcare professionals can explore breast tissue layer by layer, enhancing the ability to analyze the images in greater detail. This tool provides a comprehensive understanding of the breast tissue structure, making it easier to detect abnormalities and improve diagnostic accuracy.</p></div>", unsafe_allow_html=True)
+    st.markdown("<div class='feature-box'><h3 class='feature-box'>AI-Powered Diagnostic Assistance</h3><p>Integrated with aiXplain, MammoCare incorporates AI-driven diagnostic assistance, offering healthcare professionals valuable insights and recommendations based on sophisticated algorithms. This feature supports clinicians by providing more accurate analysis and helping them make informed decisions about patient care, leading to better outcomes.</p></div>", unsafe_allow_html=True)
 
 
     # # Sidebar for user input
@@ -495,7 +495,7 @@ if selected == "Home":
 
 
     # # Footer
-    # st.markdown("<footer style='text-align: center; padding: 20px; background-color: #E91E63; color: white;'>© 2024 MammoInsight. All rights reserved.</footer>", unsafe_allow_html=True)
+    # st.markdown("<footer style='text-align: center; padding: 20px; background-color: #E91E63; color: white;'>© 2024 MammoCare. All rights reserved.</footer>", unsafe_allow_html=True)
    
         
     
@@ -834,13 +834,13 @@ if selected == "Presentation Deck":
     # Embed the Canva design using iframe
     canva_iframe_code = """
    <div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%;
-    padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
-    border-radius: 8px; will-change: transform;">
-    <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
-    src="https://www.canva.com/design/DAGdjb_N0ic/IYIEPr6G8AyjO5WDdDpkJw/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
-     </iframe>
-    </div>
-    <a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAGdjb_N0ic&#x2F;IYIEPr6G8AyjO5WDdDpkJw&#x2F;view?utm_content=DAGdjb_N0ic&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">Copy of Copy of MIAS DDSM InBreast</a> by MOHDSHADULLA SHAIKH
+ padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+ border-radius: 8px; will-change: transform;">
+  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+    src="https://www.canva.com/design/DAGjBW1mHgs/EF8Q-dKJEJyFoagnUJ9IsA/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+  </iframe>
+</div>
+<a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAGjBW1mHgs&#x2F;EF8Q-dKJEJyFoagnUJ9IsA&#x2F;view?utm_content=DAGjBW1mHgs&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">Copy of Copy of Copy of MIAS DDSM InBreast</a> by MOHDSHADULLA SHAIKH
     """
     st.markdown(canva_iframe_code, unsafe_allow_html=True)    
     
@@ -849,11 +849,8 @@ if selected == "Presentation Deck":
 if selected == "Contact Us":  
     st.title("Contact Us")
     st.markdown("""
-    <p>If you have any questions or need support, please reach out to us at <a href="mailto:support@MammoInsight.com">support@MammoInsight.com</a>.</p>
+    <p>If you have any questions or need support, please reach out to us at <a href="mailto:support@MammoCare.com">support@MammoCare.com</a>.</p>
     """, unsafe_allow_html=True)
 
 # Footer
-
-st.markdown("<footer style='text-align: center; padding: 20px; background-color:Black; color: white;'>© 2025 MammoInsight. All rights reserved.</footer>", unsafe_allow_html=True)       
-
-
+st.markdown("<footer style='text-align: center; padding: 20px; background-color:Black; color: white;'>© 2025 MammoCare. All rights reserved.</footer>", unsafe_allow_html=True)       
