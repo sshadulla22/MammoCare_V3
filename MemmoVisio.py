@@ -18,7 +18,6 @@ import streamlit.components.v1 as components
 import numpy as np
 import cv2
 import plotly.graph_objects as go
-from vedo import Plotter, Volume
 from PIL import Image, ImageEnhance, ImageFilter
 import io
 import pydicom
@@ -853,4 +852,5 @@ if selected == "Contact Us":
 
 # Footer
 st.markdown("<footer style='text-align: center; padding: 20px; background-color:Black; color: white;'>© 2025 MammoCare. All rights reserved.</footer>", unsafe_allow_html=True)       
+
 
