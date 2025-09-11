@@ -3,7 +3,7 @@ pandas
 numpy
 snowflake-connector-python
 streamlit-option-menu
-opencv-python-headless
+opencv-python
 Pillow
 pydicom
 streamlit-chat
@@ -11,6 +11,5 @@ requests
 matplotlib
 scikit-image
 plotly
-pyvista
 vedo
-vtk
+st-tailwind
