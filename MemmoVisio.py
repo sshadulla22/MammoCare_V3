@@ -55,107 +55,6 @@ def load_data():
 data = load_data()
 
 # Inject custom styles to modify the default Streamlit header and make the button responsive
-st.markdown(
-    """
-    <style>
-        /* Custom header styling */
-        .stAppHeader {
-            background-color: #31333f !important;
-            color: white !important;
-            padding: 10px 20px !important;
-            border-bottom: 2px solid #ccc !important;
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            width: 100% !important;
-            z-index: 1000 !important;
-        }
-
-        .stAppToolbar {
-            display: flex !important;
-            align-items: center !important;
-            justify-content: space-between !important;
-        }
-
-        /* Add a button to the header 
-        .custom-header-button {
-            background-color: #007BFF !important;
-            color: white !important;
-            border: none !important;
-            padding: 10px 20px !important;
-            font-size: 14px !important;
-            cursor: pointer !important;
-            border-radius: 5px !important;
-            text-decoration: none !important;
-            margin-right: 10px !important;
-            display: inline-block;
-        }
-
-        .custom-header-button:hover {
-            background-color: #0056b3 !important;
-        }
-        */
-        /* Prevent overlap with fixed header */
-        .main-content {
-            margin-top: 70px;
-        }
-
-        /* Make button responsive 
-        @media (max-width: 768px) {
-            .custom-header-button {
-                font-size: 12px !important;
-                padding: 8px 16px !important;
-            } */
-
-            /* Adjust header layout for small screens */
-            .stAppToolbar {
-                flex-direction: column !important;
-                align-items: center !important;
-            }
-
-            .stAppHeader {
-                padding: 1px 1px !important;
-            }
-
-              /* Three-dot menu styling */
-        .stMainMenu {
-            color: white !important;
-        }
-
-            /* Adjust text in header */
-            .stAppHeader h1 {
-                font-size: 40px !important;
-                align-items: center !important;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .custom-header-button {
-                font-size: 10px !important;
-                padding: 6px 12px !important;
-            }
-
-            /* Adjust header layout for very small screens */
-            .stAppToolbar {
-                flex-direction: column !important;
-                align-items: center !important;
-            }
-
-            .stAppHeader {
-                padding: 1px 1px !important;
-                backgound-color: #68d7f7 !important;
-            }
-
-            /* Adjust text in header for small screens */
-            .stAppHeader h1 {
-                font-size: 40px !important;
-                text-align: center !important;
-            }
-        }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
 
 
 # Add a custom header with a button
@@ -853,6 +752,7 @@ if selected == "Contact Us":
 
 # Footer
 st.markdown("<footer style='text-align: center; padding: 20px; background-color:Black; color: white;'>© 2025 MammoCare. All rights reserved.</footer>", unsafe_allow_html=True)       
+
 
 
 
