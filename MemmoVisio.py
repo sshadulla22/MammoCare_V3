@@ -5,7 +5,7 @@ import snowflake.connector
 import streamlit_option_menu
 from streamlit_option_menu import option_menu
 import os
-from turtle import pd
+# from turtle import pd
 import cv2
 from PIL import Image
 import pydicom  # Import pydicom for DICOM file support
@@ -19,7 +19,7 @@ import streamlit.components.v1 as components
 import numpy as np
 import cv2
 import plotly.graph_objects as go
-from vedo import Plotter, Volume
+# from vedo import Plotter, Volume
 from PIL import Image, ImageEnhance, ImageFilter
 import io
 import pydicom
@@ -855,3 +855,4 @@ if selected == "Contact Us":
 
 # Footer
 st.markdown("<footer style='text-align: center; padding: 20px; background-color:Black; color: white;'>© 2025 MammoCare. All rights reserved.</footer>", unsafe_allow_html=True)       
+
