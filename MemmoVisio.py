@@ -5,6 +5,7 @@ import snowflake.connector
 import streamlit_option_menu
 from streamlit_option_menu import option_menu
 import os
+import cv2
 from PIL import Image
 import pydicom  # Import pydicom for DICOM file support
 from streamlit_chat import message  # Import the message component for chat
@@ -14,13 +15,21 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from skimage.filters import threshold_multiotsu
 import streamlit.components.v1 as components
+import numpy as np
+import cv2
+import plotly.graph_objects as go
+from PIL import Image, ImageEnhance, ImageFilter
 import io
+import pydicom
+import requests
+import time
+
 
 
 
 # Set the API key for aiXplain
-API_KEY = '799b8640ed5d2e45959f34bc3adf4f4c45515d0d492d171b8e7f07cd0da48c1e'
-API_URL = 'https://models.aixplain.com/api/v1/execute/64788e666eb56313aa7ebac1'  # aiXplain model URL
+API_KEY = '042788ea8238195afc3bbbf0b5e24320085dc01b591b7f1167cfb472767db6cb'
+API_URL = 'https://models.aixplain.com/api/v1/execute/6414bd3cd09663e9225130e8'  # aiXplain model URL
 
 headers = {
     "Authorization": f"Bearer {API_KEY}",
@@ -133,6 +142,7 @@ st.markdown(
 
             .stAppHeader {
                 padding: 1px 1px !important;
+                backgound-color: #68d7f7 !important;
             }
 
             /* Adjust text in header for small screens */
@@ -178,18 +188,33 @@ st.markdown(
         background-color: #f4f4f4;
     }
     .hero {
-        background-image: url('https://cdn.apollohospitals.com/health-library-prod/2021/04/3D-MAMMOGRAM-scaled.jpg');
-        background-size: cover;
-        background-position: center;
-        height: 400px;
-        border-radius: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        color: white;
-        border: 5px solid #31333F;
-        
+      height: 400px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      border: 4px solid #31333F;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .hero h1 {
+      position: relative;
+      z-index: 1;
+      font-size: 1.5rem;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     }
     .cta-button {
         background-color: Black;
@@ -230,8 +255,8 @@ st.markdown(
 with st.sidebar:
     selected = option_menu(
         menu_title="Main Menu",
-        options=["Home", "MP Muscle Removal", "AP Muscle Removal", "Treatment Centers", "How to Use This Software", "Presentation Deck", "Contact Us"],
-        icons=["house", "activity", "activity", "book", "globe", "play", "cogs"],
+        options=["Home","MammoVision","Treatment Centers","Presentation Deck","MP Muscle Removal", "AP Muscle Removal","How to Use This Software", "Contact Us"],
+        icons=["house", "activity", "book","play", "activity", "activity", "globe", ""],
         menu_icon="cast",
         default_index=0
     )
@@ -375,11 +400,14 @@ if selected == "Home":
     </style>
 
     <div class="hero">
-        <h1>
-            "Enhancing Breast Cancer Detection by Eliminating Unwanted Artifacts like Pectoral Muscle"
-        </h1>
-        
-    </div>
+    <video autoplay loop muted>
+      <source src="https://media.istockphoto.com/id/2152935821/video/medical-consultation-with-mammography.mp4?s=mp4-640x640-is&k=20&c=hjcGGndSUPc6DbLu-VvwpUMCUYyHvE03j9rhCVsOE58=" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <h1>
+      "Simplifying Breast Cancer Visualization by Removing Unwanted Artifacts"
+    </h1>
+  </div>
 """, unsafe_allow_html=True)
 
     # st.markdown("<h2 style='text-align:center; margin-top: -12px;'>Advanced Mammogram Image Processing</h2>", unsafe_allow_html=True)
@@ -404,7 +432,7 @@ if selected == "Home":
             font-size: 20px;
             line-height: 1.6;
             text-align: justify;
-            color: #333;
+            color:#495361;
             padding: 10px;
         }
 
@@ -416,6 +444,7 @@ if selected == "Home":
             #About-box p {
                 font-size: 16px;
                 padding: 5px;
+                
             }
         }
 
@@ -433,23 +462,22 @@ if selected == "Home":
     <div class="About-box" id="About-box">
         <h1>About MammoCare</h1>
         <p>
-            MammoCare is a cutting-edge mammogram image processing platform designed to enhance the clarity and quality of mammogram images through advanced preprocessing techniques.
-            The platform is dedicated to optimizing image clarity, identifying dense regions, and providing healthcare professionals with the detailed visual information necessary for accurate assessments.
-            MammoCare employs manual techniques for pectoral muscle removal, utilizing adjustment methods that the user manually defines to eliminate the pectoral muscle based on the adjustments.
-            The Auto Pectoral Muscle Removal technique, including depth-first search algorithms and various image processing methods, achieves efficient and precise muscle segmentation and removal.
-            The integration of these methodologies ensures optimal visualization of breast tissue, leading to enhanced diagnostic reliability. 
-            By focusing on high-level image preprocessing, MammoCare empowers healthcare professionals to make informed decisions, ultimately improving patient care in breast health management. 
-            MammoCare also integrates aiXplain AI-Powered Diagnostic Assistance to further enhance diagnostic accuracy and clinical decision-making.
+             MammoCare is an advanced mammogram image processing platform tailored to revolutionize breast cancer detection by eliminating artifacts and enhancing image clarity. Early detection of breast cancer can significantly improve survival rates, but dense breast tissue and artifacts such as the pectoral muscle often obscure mammogram readings.
+             MammoCare employs both manual and automated pectoral muscle removal techniques, including depth-first search algorithms and advanced image processing methods, to produce artifact-free, high-quality images. This clarity enables radiologists to detect abnormalities, tumors, or dense regions with unparalleled accuracy.
+             Additionally, MammoCare introduces interactive 3D visualizations, allowing healthcare professionals to explore breast tissue layer by layer for a more detailed analysis. By addressing challenges such as dense tissue masking, MammoCare provides radiologists with a cutting-edge tool for enhancing diagnostic precision and improving breast health management.
+             By combining innovative technologies and a user-friendly interface, MammoCare transforms mammogram analysis, empowering healthcare professionals to deliver faster, more accurate diagnoses and ensuring better outcomes for patients worldwide.
         </p>
     </div>
 """, unsafe_allow_html=True)
 
     # Features section
     st.markdown("<div class='About-box' id='About-box'><h1>Key Features</h1></div>", unsafe_allow_html=True)
-    st.markdown("<div class='feature-box'><h3 class='feature-box'>Advanced Image Clarity Optimization</h3><p>MammoCare utilizes high-level preprocessing techniques to enhance the clarity and quality of mammogram images. This allows for better visualization of breast tissue, enabling healthcare professionals to make more accurate assessments.</p></div>", unsafe_allow_html=True)
-    st.markdown("<div class='feature-box'><h3 class='feature-box'>Dual Approach to Pectoral Muscle Removal</h3><p> MammoCare employs manual techniques for pectoral muscle removal, utilizing adjustment methods that user manually define and eliminate the pectoral muscle based on the adjustments. The Auto Pectoral Muscle Removal technique, including depth-first search algorithms and various image processing methods, to achieve efficient and precise muscle segmentation and removal.</p></div>", unsafe_allow_html=True)
-    st.markdown("<div class='feature-box'><h3 class='feature-box'>Dense Region Identification</h3><p>MammoCare focuses on identifying dense regions within mammogram images. By highlighting these areas, healthcare professionals can quickly and effectively assess potential abnormalities, facilitating timely and informed decision-making in breast health management.</p></div>", unsafe_allow_html=True)
-    st.markdown("<div class='feature-box'><h3 class='feature-box'>AI-Powered Diagnostic Assistance</h3><p>Integrated with aiXplain, MammoCare offers AI-driven diagnostic assistance, providing healthcare professionals with valuable insights and recommendations based on advanced algorithms. This feature enhances diagnostic accuracy and supports clinicians in making well-informed decisions regarding patient care.</p></div>", unsafe_allow_html=True)
+    st.markdown("<div class='feature-box'><h3 class='feature-box'>Advanced Image Clarity Optimization</h3><p>MammoCare employs advanced image processing techniques to enhance the clarity and quality of mammogram images, eliminating artifacts and improving tissue visualization. This high-level optimization ensures more accurate breast tissue assessment, which is crucial for effective early detection of abnormalities and tumors.</p></div>", unsafe_allow_html=True)
+    st.markdown("<div class='feature-box'><h3 class='feature-box'>Dual Approach to Pectoral Muscle Removal</h3><p>MammoCare utilizes both manual and automated techniques to remove the pectoral muscle from mammogram images. Manual techniques allow radiologists to define and adjust the removal based on their preferences. The Auto Pectoral Muscle Removal method employs depth-first search algorithms and advanced image processing to efficiently segment and remove the pectoral muscle, improving image clarity and accuracy for diagnosis.</p></div>", unsafe_allow_html=True)
+    st.markdown("<div class='feature-box'><h3 class='feature-box'>Dense Region Identification</h3><p>MammoCare specializes in identifying dense regions within mammogram images, which can often obscure abnormalities. By highlighting these dense regions, MammoCare allows healthcare professionals to effectively detect potential risks, ensuring timely intervention and better breast health management.</p></div>", unsafe_allow_html=True)
+    st.markdown("<div class='feature-box'><h3 class='feature-box'>Interactive 3D Visualization</h3><p>With MammoCare’s interactive 3D visualizations, healthcare professionals can explore breast tissue layer by layer, enhancing the ability to analyze the images in greater detail. This tool provides a comprehensive understanding of the breast tissue structure, making it easier to detect abnormalities and improve diagnostic accuracy.</p></div>", unsafe_allow_html=True)
+    st.markdown("<div class='feature-box'><h3 class='feature-box'>AI-Powered Diagnostic Assistance</h3><p>Integrated with aiXplain, MammoCare incorporates AI-driven diagnostic assistance, offering healthcare professionals valuable insights and recommendations based on sophisticated algorithms. This feature supports clinicians by providing more accurate analysis and helping them make informed decisions about patient care, leading to better outcomes.</p></div>", unsafe_allow_html=True)
+
 
     # # Sidebar for user input
     # st.sidebar.header("AI Model Interaction")
@@ -594,6 +622,122 @@ if selected == "AP Muscle Removal":
     <br><br><p><a href="https://bcdauto.streamlit.app/" class="cta-button">Auto Pectoral Muscle Removal</a></p><br><br>
     """, unsafe_allow_html=True)
 
+def new_func(image):
+    return image
+
+
+if selected == "MammoVision":
+    # Radio button for selecting different actions in MammoVision
+    action = st.radio("Choose an Action", ["Pixel Intensity Based Visualization", "Dimensional Space Visualization", "Contour Plot"])
+
+    # Radio button for selecting different options in MammoVision
+    if action == "Pixel Intensity Based Visualization":
+        st.write("### 3D and 4D Image Visualization")
+        st.write("Upload an image to visualize it in 3D.")
+        uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "png", "jpeg"])
+
+        if uploaded_file is not None:
+            # Convert the uploaded file to a PIL image and then to grayscale
+            image = Image.open(uploaded_file).convert("L")
+            image_np = np.array(image) / 255.0  # Normalize pixel values
+
+            # Create 3D Surface Plot
+            def create_3d_surface(image_np):
+                x = np.linspace(0, image_np.shape[1] - 1, image_np.shape[1])
+                y = np.linspace(0, image_np.shape[0] - 1, image_np.shape[0])
+                x, y = np.meshgrid(x, y)
+                z = image_np * 20  # Scale z for height
+
+                fig = go.Figure(data=[go.Surface(z=z, x=x, y=y, colorscale="Gray", opacity=0.9)])
+                fig.update_layout(
+                    title="3D Surface Plot",
+                    scene=dict(zaxis=dict(title="Intensity", range=[0, 20]), xaxis=dict(title="X"), yaxis=dict(title="Y")),
+                    autosize=True,
+                    width=1000,
+                    height=600,
+                )
+                return fig
+
+            # Create and display 3D surface plot
+            surface_fig = create_3d_surface(image_np)
+            st.plotly_chart(surface_fig, use_container_width=True)
+
+    elif action == "Dimensional Space Visualization":
+        st.write("### Dimensional Space Visualization (Time Series)")
+        st.write("Simulate and visualize a time series of images.")
+        uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "png", "jpeg"])
+
+        if uploaded_file is not None:
+            # Convert the uploaded file to a PIL image and then to grayscale
+            image = Image.open(uploaded_file).convert("L")
+            image_np = np.array(image) / 255.0  # Normalize pixel values
+
+            # Create a 4D visualization (time series)
+            time_series = np.stack([image_np * (i + 1) / 10 for i in range(10)], axis=0)  # Simulate a time series
+
+            vol_4d = Volume(time_series, spacing=(1, 1, 1))
+            vol_4d.cmap("bone")
+            plotter_4d = Plotter(title="4D Volume (Time Series)", interactive=True)
+            plotter_4d.show(vol_4d)
+
+    elif action == "Contour Plot":
+        st.write("### 3D Contour Plot")
+        st.write("View the reversed 3D contour plot of the image.")
+        uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "png", "jpeg"])
+
+        if uploaded_file is not None:
+            # Convert the uploaded file to a PIL image and then to grayscale
+            image = Image.open(uploaded_file).convert("L")
+            image_np = np.array(image) / 255.0  # Normalize pixel values
+
+            # Flip the image vertically and create a contour plot
+            reversed_image_2d = np.flipud(image_np)  # Flip the image vertically
+            fig_contour = go.Figure(data=go.Contour(z=reversed_image_2d * 20, colorscale='Viridis'))
+            fig_contour.update_layout(
+                title='Reversed 3D Contour Plot',
+                xaxis_title='X',
+                yaxis_title='Y',
+                autosize=True,
+                width=1000,
+                height=600,
+            )
+            st.plotly_chart(fig_contour, use_container_width=True)
+
+    # Add custom styling for survival rate
+    def color_survival_rate(val):
+        if "%" in val:
+            rate = int(val.strip('%'))
+            if rate == 100:
+                return "background-color: #c6efce; color: #006100;"  # Green for high survival
+            elif rate >= 50:
+                return "background-color: #ffeb9c; color: #9c5700;"  # Yellow for medium survival
+            else:
+                return "background-color: #ffc7ce; color: #9c0006;"  # Red for low survival
+        return ""
+
+    # Define the data for Stages of Breast Cancer
+    data = {
+        "Stages": ["0", "1", "2", "3", "4"],
+        "Tumor Size": ["Non-invasive", "Less than 2 cm", "Between 2-5 cm", "More than 5 cm", "Not applicable"],
+        "Lymph Node Involvement": ["No", "No", "No or in same side of breast", "Yes, on same side of breast", "Not applicable"],
+        "Metastasis": ["No", "No", "No", "No", "Yes"],
+        "5-Year Relative Survival Rate": ["100%", "100%", "86%", "57%", "20%"]
+    }
+
+    # Create a DataFrame
+    df = pd.DataFrame(data)
+
+    # Display the styled DataFrame
+    st.markdown("### Stages of Breast Cancer")
+    styled_table = df.style.applymap(color_survival_rate, subset=["5-Year Relative Survival Rate"])
+    st.dataframe(styled_table, use_container_width=True)
+
+    # Add the source below the table
+    st.markdown("**Source**: The Women's Health Resource")
+
+
+
+
 
 if selected == "Treatment Centers":
     st.title("Search for treatment centers based on country, center name, or town.")
@@ -667,9 +811,9 @@ if selected == "How to Use This Software":
     
     st.write("Watch the tutorial video below to learn how to use this software effectively.")
 
-    # YouTube video embedding with autoplay and mute enabled
-    youtube_video_id = "9SE6B0h-4-Q"  # Replace with your actual YouTube video ID
-    video_file_path = f"https://www.youtube.com/embed/{youtube_video_id}?autoplay=1&mute=1"
+    # # YouTube video embedding with autoplay and mute enabled
+    # youtube_video_id = "9SE6B0h-4-Q"  # Replace with your actual YouTube video ID
+    # video_file_path = f"https://www.youtube.com/embed/{youtube_video_id}?autoplay=1&mute=1"
 
     # Embed video in a full-width container
     st.markdown(f"""
@@ -687,14 +831,14 @@ if selected == "Presentation Deck":
 
     # Embed the Canva design using iframe
     canva_iframe_code = """
-    <div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%;
-    padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
-    border-radius: 8px; will-change: transform;">
-    <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
-    src="https://www.canva.com/design/DAGSuE39DdE/S6k_tKSQB4iHaG7GMzL4_Q/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
-    </iframe>
-    </div>
-    <a href="https://www.canva.com/design/DAGSuE39DdE/S6k_tKSQB4iHaG7GMzL4_Q/view?utm_content=DAGSuE39DdE&utm_campaign=designshare&utm_medium=embeds&utm_source=link" target="_blank" rel="noopener">MIAS DDSM InBreast</a> by MOHDSHADULLA SHAIKH
+   <div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%;
+ padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+ border-radius: 8px; will-change: transform;">
+  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+    src="https://www.canva.com/design/DAGjBW1mHgs/EF8Q-dKJEJyFoagnUJ9IsA/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+  </iframe>
+</div>
+<a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAGjBW1mHgs&#x2F;EF8Q-dKJEJyFoagnUJ9IsA&#x2F;view?utm_content=DAGjBW1mHgs&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">Copy of Copy of Copy of MIAS DDSM InBreast</a> by MOHDSHADULLA SHAIKH
     """
     st.markdown(canva_iframe_code, unsafe_allow_html=True)    
     
@@ -703,10 +847,8 @@ if selected == "Presentation Deck":
 if selected == "Contact Us":  
     st.title("Contact Us")
     st.markdown("""
-    <p>If you have any questions or need support, please reach out to us at <a href="mailto:support@mammocare.com">support@mammocare.com</a>.</p>
+    <p>If you have any questions or need support, please reach out to us at <a href="mailto:support@MammoCare.com">support@MammoCare.com</a>.</p>
     """, unsafe_allow_html=True)
 
 # Footer
-st.markdown("<footer style='text-align: center; padding: 20px; background-color:Black; color: white;'>© 2024 MammoCare. All rights reserved.</footer>", unsafe_allow_html=True)       
-
-
+st.markdown("<footer style='text-align: center; padding: 20px; background-color:Black; color: white;'>© 2025 MammoCare. All rights reserved.</footer>", unsafe_allow_html=True)       
