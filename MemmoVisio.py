@@ -5,7 +5,6 @@ import snowflake.connector
 import streamlit_option_menu
 from streamlit_option_menu import option_menu
 import os
-from turtle import pd
 import cv2
 from PIL import Image
 import pydicom  # Import pydicom for DICOM file support
@@ -710,3 +709,4 @@ if selected == "Contact Us":
 
 # Footer
 st.markdown("<footer style='text-align: center; padding: 20px; background-color:Black; color: white;'>© 2024 MammoCare. All rights reserved.</footer>", unsafe_allow_html=True)       
+
