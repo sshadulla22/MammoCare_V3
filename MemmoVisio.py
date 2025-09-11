@@ -852,5 +852,3 @@ if selected == "Contact Us":
 
 # Footer
 st.markdown("<footer style='text-align: center; padding: 20px; background-color:Black; color: white;'>© 2025 MammoCare. All rights reserved.</footer>", unsafe_allow_html=True)       
-
-
