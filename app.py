@@ -6,7 +6,6 @@ import streamlit_option_menu
 from streamlit_option_menu import option_menu
 import os
 import pandas as pd
-import cv2
 from PIL import Image
 import pydicom  # Import pydicom for DICOM file support
 from streamlit_chat import message  # Import the message component for chat
