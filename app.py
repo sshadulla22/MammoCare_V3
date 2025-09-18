@@ -5,7 +5,6 @@ import snowflake.connector
 import streamlit_option_menu
 from streamlit_option_menu import option_menu
 import os
-from turtle import pd
 import cv2
 from PIL import Image
 import pydicom  # Import pydicom for DICOM file support
