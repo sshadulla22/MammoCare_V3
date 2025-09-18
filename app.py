@@ -31,7 +31,7 @@ import st_tailwind as tw
 
 
 # Set the API key for aiXplain
-API_KEY = '042788ea8238195afc3bbbf0b5e24320085dc01b591b7f1167cfb472767db6cb'
+API_KEY = ''
 API_URL = 'https://models.aixplain.com/api/v1/execute/6414bd3cd09663e9225130e8'  # aiXplain model URL
 
 headers = {
