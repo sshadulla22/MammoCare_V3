@@ -1,0 +1,12 @@
+streamlit
+pandas
+numpy
+snowflake-connector-python
+streamlit-option-menu
+opencv-python-headless
+pillow
+pydicom
+streamlit-chat
+requests
+matplotlib
+scikit-image
