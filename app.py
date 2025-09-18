@@ -17,7 +17,7 @@ from skimage.filters import threshold_multiotsu
 import streamlit.components.v1 as components
 import numpy as np
 import cv2
-from vedo import Plotter, Volume
+#from vedo import Plotter, Volume
 from PIL import Image, ImageEnhance, ImageFilter
 import io
 import pydicom
