@@ -3,7 +3,7 @@ pandas
 numpy
 snowflake-connector-python
 streamlit-option-menu
-opencv-python
+opencv-python-headless
 Pillow
 pydicom
 streamlit-chat
@@ -13,4 +13,3 @@ scikit-image
 plotly
 vedo
 st-tailwind
-opencv-python-headless
