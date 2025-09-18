@@ -55,7 +55,6 @@ Integrated with **aiXplain**, providing AI-driven insights and recommendations t
 - **Data:** CSV-based treatment centers and metadata  
 
 ---
-## License
 
 © 2025 MammoCare. All rights reserved.
 
