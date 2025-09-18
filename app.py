@@ -23,7 +23,7 @@ import io
 import pydicom
 import requests
 import time
-import st_tailwind as tw
+#import st_tailwind as tw
 
 
 
