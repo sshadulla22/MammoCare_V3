@@ -5,6 +5,7 @@ import snowflake.connector
 import streamlit_option_menu
 from streamlit_option_menu import option_menu
 import os
+from turtle import pd
 import cv2
 from PIL import Image
 import pydicom  # Import pydicom for DICOM file support
@@ -17,13 +18,15 @@ from skimage.filters import threshold_multiotsu
 import streamlit.components.v1 as components
 import numpy as np
 import cv2
-#from vedo import Plotter, Volume
+import plotly.graph_objects as go
+from vedo import Plotter, Volume
 from PIL import Image, ImageEnhance, ImageFilter
 import io
 import pydicom
 import requests
 import time
-#import st_tailwind as tw
+import st_tailwind as tw
+
 
 
 
