@@ -13,3 +13,4 @@ scikit-image
 plotly
 vedo
 st-tailwind
+opencv-python-headless
