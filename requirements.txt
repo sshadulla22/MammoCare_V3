@@ -3,7 +3,7 @@ pandas
 numpy
 snowflake-connector-python
 streamlit-option-menu
-opencv-python-headless==4.8.1.78
+opencv
 Pillow
 pydicom
 streamlit-chat
