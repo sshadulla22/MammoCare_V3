@@ -3,10 +3,13 @@ pandas
 numpy
 snowflake-connector-python
 streamlit-option-menu
-opencv-python-headless
-pillow
+opencv-python
+Pillow
 pydicom
 streamlit-chat
 requests
 matplotlib
 scikit-image
+plotly
+vedo
+st-tailwind
