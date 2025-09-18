@@ -1,11 +1,9 @@
 # MammoCare 🩺
 
-**AI-Powered Diagnostic Assistance for Breast Cancer**  
-Developed by **Silent Echo**  
+**Simplifying Breast Cancer Visualization by Removing Unwanted Artifacts**  
 
-> "Simplifying Breast Cancer Visualization by Removing Unwanted Artifacts"
-
-[🌐 Visit MammoCare](https://your-live-app-link.com)
+> "Developed by **Silent Echo**  
+"
 
 ---
 
@@ -57,19 +55,10 @@ Integrated with **aiXplain**, providing AI-driven insights and recommendations t
 - **Data:** CSV-based treatment centers and metadata  
 
 ---
-
-## Demo & Screenshots
-
-![MammoCare Dashboard](https://your-screenshot-link.com/dashboard.png)
-
-🌐 [Live Demo](https://your-live-app-link.com)
-
----
-
 ## License
 
 © 2025 MammoCare. All rights reserved.
 
 ---
 
-Made with ❤️ by **Silent Echo**
+Made by **Silent Echo**
