@@ -17,7 +17,6 @@ import pandas as pd
 from skimage.filters import threshold_multiotsu
 import streamlit.components.v1 as components
 import numpy as np
-import cv2
 import plotly.graph_objects as go
 from vedo import Plotter, Volume
 from PIL import Image, ImageEnhance, ImageFilter
