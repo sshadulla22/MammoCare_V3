@@ -1974,20 +1974,18 @@ elif selected == "Contact":
             <p>Have questions or need assistance? Our team is ready to help!</p>
             <h4>Contact Information</h4>
             <ul>
-                <li><strong>Email:</strong> support@mammocare.com</li>
-                <li><strong>Phone:</strong> +1 (800) MAMMO-CARE</li>
-                <li><strong>Live Chat:</strong> Available 24/7</li>
-                <li><strong>Website:</strong> www.mammocare.com</li>
+             
+                <li><strong>Phone:</strong>9833755209</li>
+              
             </ul>
             <h4>Business Hours</h4>
             <p>Monday - Friday: 9:00 AM - 6:00 PM EST<br>
-            Emergency Support: 24/7</p>
             <h4>Social Media</h4>
             <p>Follow us for updates and news:</p>
             <ul>
-                <li>Twitter: @MammoCare</li>
-                <li>Facebook: /MammoCare</li>
-                <li>LinkedIn: /company/mammocare</li>
+                <li>Twitter:</li>
+                <li>Facebook:</li>
+                <li>LinkedIn:</li>
             </ul>
         </div>
         """, unsafe_allow_html=True)
@@ -2234,28 +2232,28 @@ st.markdown("""
             <div class="footer-column">
                 <h4>Platform</h4>
                 <ul>
-                    # <li><a href="#home">Home</a></li>
-                    # <li><a href="#manual">Manual Processing</a></li>
-                    # <li><a href="#auto">Auto Processing</a></li>
-                    # <li><a href="#viz">3D Visualization</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#manual">Manual Processing</a></li>
+                    <li><a href="#auto">Auto Processing</a></li>
+                    <li><a href="#viz">3D Visualization</a></li>
                 </ul>
             </div>
             <div class="footer-column">
                 <h4> Resources</h4>
                 <ul>
-                    # <li><a href="#centers">Treatment Centers</a></li>
-                    # <li><a href="#guide">User Guide</a></li>
-                    # <li><a href="#faq">FAQ</a></li>
-                    # <li><a href="#support">Support</a></li>
+                    <li><a href="#centers">Treatment Centers</a></li>
+                    <li><a href="#guide">User Guide</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#support">Support</a></li>
                 </ul>
             </div>
             <div class="footer-column">
                 <h4> Contact</h4>
                 <ul>
-                    # <li><a href="mailto:info@mammocare.com">info@mammocare.com</a></li>
+                    <li><a href="mailto:info@mammocare.com">info@mammocare.com</a></li>
                     <li><a href="tel:9833755209</a></li>
-                    # <li><a href="#location">Find Us</a></li>
-                    # <li><a href="#contact">Contact Form</a></li>
+                    <li><a href="#location">Find Us</a></li>
+                    <li><a href="#contact">Contact Form</a></li>
                 </ul>
             </div>
             <div class="footer-column">
