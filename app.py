@@ -369,7 +369,6 @@ with st.sidebar:
     # st.metric("Images Processed", "10,000+", "+25%")
     # st.metric("Accuracy Rate", "98.5%", "+2.1%")
     st.markdown("---")
-    st.markdown("🤖 **AI-Powered Diagnostics**")
     st.markdown("Powered by Silent Echo")
 
 if selected == "Home":
