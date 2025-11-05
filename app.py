@@ -2234,28 +2234,28 @@ st.markdown("""
             <div class="footer-column">
                 <h4>Platform</h4>
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#manual">Manual Processing</a></li>
-                    <li><a href="#auto">Auto Processing</a></li>
-                    <li><a href="#viz">3D Visualization</a></li>
+                    # <li><a href="#home">Home</a></li>
+                    # <li><a href="#manual">Manual Processing</a></li>
+                    # <li><a href="#auto">Auto Processing</a></li>
+                    # <li><a href="#viz">3D Visualization</a></li>
                 </ul>
             </div>
             <div class="footer-column">
                 <h4> Resources</h4>
                 <ul>
-                    <li><a href="#centers">Treatment Centers</a></li>
-                    <li><a href="#guide">User Guide</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#support">Support</a></li>
+                    # <li><a href="#centers">Treatment Centers</a></li>
+                    # <li><a href="#guide">User Guide</a></li>
+                    # <li><a href="#faq">FAQ</a></li>
+                    # <li><a href="#support">Support</a></li>
                 </ul>
             </div>
             <div class="footer-column">
                 <h4> Contact</h4>
                 <ul>
-                    <li><a href="mailto:info@mammocare.com">info@mammocare.com</a></li>
-                    <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
-                    <li><a href="#location">Find Us</a></li>
-                    <li><a href="#contact">Contact Form</a></li>
+                    # <li><a href="mailto:info@mammocare.com">info@mammocare.com</a></li>
+                    <li><a href="tel:9833755209</a></li>
+                    # <li><a href="#location">Find Us</a></li>
+                    # <li><a href="#contact">Contact Form</a></li>
                 </ul>
             </div>
             <div class="footer-column">
